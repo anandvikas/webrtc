@@ -1,5 +1,4 @@
-import React, { useState, useContext, useRef, useEffect, useCallback } from 'react'
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 
 let peerConnection;
@@ -123,7 +122,6 @@ const useWebrtc = () => {
                 content: 'Something went wrong while generating the answer.',
             });
         }
-        // console.log(peerConnection);
         await eventPromise;
         return newAnswer;
     }
@@ -154,7 +152,6 @@ const useWebrtc = () => {
             });
             return false
         }
-        console.log(peerConnection);
         if (peerConnection.currentRemoteDescription) {
             return true
         } else {

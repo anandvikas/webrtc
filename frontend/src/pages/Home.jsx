@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Divider, Space, Tooltip } from 'antd';
+import { Tooltip } from 'antd';
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { io } from "socket.io-client";
 import { setRoomId, setSocket } from '../store/action';
@@ -27,10 +27,7 @@ const useSocket = () => {
         const { offer, roomId } = data;
         if (!offer) return;
         if (!socket) return;
-        // console.log("offer", offer);
         const answer = await createAnswer(offer);
-        // console.log("answer", answer);
-        // return;
         socket.emit("sendAnswer", { roomId, answer });
         dispatch(setRoomId(roomId));
     }
@@ -40,12 +37,8 @@ const useSocket = () => {
     const returnAnswerHandler = async (data) => {
         console.log("answer returned ...")
         const { answer } = data;
-        // console.log("answer", answer)
         if (!answer) return;
         let status = await addAnswer(answer);
-        // if (status) {
-        //     navigate("/play");
-        // }
     }
 
 
@@ -72,13 +65,6 @@ const useSocket = () => {
     }
 
     const startNew = async () => {
-        // clearing previous connection ---
-        // if (socket) {
-        //     socket.disconnect();
-        // }
-
-        // // creating new connection ---
-        // let newSocket = await initialise();
 
         console.log("started new...")
         if (!socket) {
@@ -93,13 +79,7 @@ const useSocket = () => {
     }
 
     const joinExisting = async (roomId) => {
-        // // clearing previous connection ---
-        // if (socket) {
-        //     socket.disconnect();
-        // }
 
-        // // creating new connection ---
-        // let newSocket = await initialise();
         console.log("joined existing...")
         if (!socket) {
             toast.open({
@@ -109,7 +89,6 @@ const useSocket = () => {
             return;
         };
         socket.emit("joinExisting", { roomId });
-        // dispatch(setRoomId(roomId));
     }
 
 
