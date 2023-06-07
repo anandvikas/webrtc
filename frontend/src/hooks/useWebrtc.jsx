@@ -21,7 +21,30 @@ const useWebrtc = () => {
             {
                 urls: [
                     "stun:stun.l.google.com:19302",
-                    "stun:global.stun.twilio.com:3478"
+                    "stun:global.stun.twilio.com:3478",
+
+                    'stun:stun1.1.google.com:19302',
+                    'stun:stun2.1.google.com:19302',
+
+                    "stun:iphone-stun.strato-iphone.de:3478",
+                    "stun:stun.budgetphone.nl:3478",
+                    "stun:stun.budgetsip.com:3478",
+
+                    "stun:stun1.l.google.com:19302",
+                    "stun:stun2.l.google.com:19302",
+                    "stun:stun3.l.google.com:19302",
+                    "stun:stun4.l.google.com:19302",
+                    "stun:stun.l.google.com:19302",
+
+                    "stun:stun.ideasip.com",
+                    "stun:stun.rixtelecom.se",
+                    "stun:stun.schlund.de",
+                    "stun:stun.stunprotocol.org:3478",
+                    "stun:stun.voiparound.com",
+                    "stun:stun.voipbuster.com",
+                    "stun:stun.voipstunt.com",
+                    "stun:stun.voxgratia.org",
+                    "stun:stun.ekiga.net",
                 ]
             }
         ]
