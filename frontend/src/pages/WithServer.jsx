@@ -3,9 +3,10 @@ import { Tooltip } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import useSocket from '../hooks/UseSocket';
 import { useSelector } from 'react-redux';
+import Loader from '../components/Loader/Loader';
 
 const WithServer = () => {
-    const { roomId, toast } = useSelector(store => store.generalReducer);
+    const { roomId, toast, loading } = useSelector(store => store.generalReducer);
     const { startNew, joinExisting, initialise } = useSocket();
     const myVideoRef = useRef(null);
 
@@ -59,6 +60,8 @@ const WithServer = () => {
     }, [])
     return (
         <>
+            {loading && <div className="loading_overlay"><Loader /></div>}
+
             <div className='home_div'>
                 <h1>Start video call.</h1>
                 <div className='wos_vid_div'><video className='wos_vid' ref={myVideoRef} autoPlay playsInline></video></div>

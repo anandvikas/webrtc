@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { io } from "socket.io-client";
-import { setRoomId, setSocket } from '../store/action';
+import { setRoomId, setSocket, setLoading } from '../store/action';
 import useWebrtc from './useWebrtc';
 import { PORT } from "../constant/api"
 import { useNavigate } from "react-router-dom";
@@ -16,6 +16,7 @@ const useSocket = () => {
 
 
     const returnRoomIdHandler = async (data) => {
+        dispatch(setLoading(false));
         console.log("roomId returned ...");
         const { roomId } = data;
         if (!roomId) return;
@@ -23,6 +24,7 @@ const useSocket = () => {
     }
 
     const returnOfferHandler = async (data) => {
+        dispatch(setLoading(false));
         console.log("offer returned ...")
         const { offer, roomId } = data;
         if (!offer) return;
@@ -65,7 +67,7 @@ const useSocket = () => {
     }
 
     const startNew = async () => {
-
+        dispatch(setLoading(true));
         console.log("started new...")
         if (!socket) {
             toast.open({
@@ -79,7 +81,7 @@ const useSocket = () => {
     }
 
     const joinExisting = async (roomId) => {
-
+        dispatch(setLoading(true));
         console.log("joined existing...")
         if (!socket) {
             toast.open({

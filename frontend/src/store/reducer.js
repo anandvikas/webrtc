@@ -2,13 +2,15 @@ import { combineReducers } from "redux";
 import {
     SET_SOCKET,
     SET_MESSAGE_API,
-    SET_ROOM_ID
+    SET_ROOM_ID,
+    SET_LOADING
 } from "./actionTypes"
 
 const initialState = {
     socket: null,
     toast: null,
-    roomId: null
+    roomId: null,
+    loading: false
 }
 
 const generalReducer = (state = initialState, action) => {
@@ -20,7 +22,10 @@ const generalReducer = (state = initialState, action) => {
             return { ...state, toast: action.payload };
         }
         case SET_ROOM_ID: {
-            return { ...state, roomId: action.payload }; 
+            return { ...state, roomId: action.payload };
+        }
+        case SET_LOADING: {
+            return { ...state, loading: action.payload };
         }
         default: return { ...state }
     }

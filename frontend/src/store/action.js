@@ -1,7 +1,8 @@
 import {
     SET_SOCKET,
     SET_MESSAGE_API,
-    SET_ROOM_ID
+    SET_ROOM_ID,
+    SET_LOADING
 } from "./actionTypes"
 
 
@@ -22,6 +23,13 @@ export const setMessageApi = (data) => {
 export const setRoomId = (data) => {
     return {
         type: SET_ROOM_ID,
+        payload: data
+    }
+}
+
+export const setLoading = (data) => {
+    return {
+        type: SET_LOADING,
         payload: data
     }
 }
